@@ -1,14 +1,26 @@
 import React from 'react';
+import { Head } from './components/Head';
+import { Button } from './components/Button';
+import { Input } from './components/Input';
 import logo from './logo.svg';
 import './App.css';
 
 const App: React.FC = () => {
   return (
     <div className="App">
+      <Head title="Hello" />
+      <Button onClick={(e) => {
+        e.preventDefault();
+        console.log(e);
+      }}
+      >
+        <h4>Button Text</h4>
+      </Button>
+      <Input />
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.tsx</code> and save to reload.
+          Write <code>src/App.tsx</code> and save to reload.
         </p>
         <a
           className="App-link"
