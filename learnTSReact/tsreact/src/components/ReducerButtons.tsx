@@ -1,0 +1,47 @@
+import React, { useReducer } from "react";
+
+type State = {
+  rValue: boolean;
+};
+
+// The following describes a way to declare types for Actions if all action 'types' and 'payloads' are similar
+// type Action = {
+//   //   type: string; // Or whatever type is attached to the action 'type'
+//   type: "one" | "two" | "three"; // more explicit than the above; removes possible errors when defining a type
+//   payload?: string; // Or whatever type is attached to the action 'payload'
+// };
+
+// Alternatively, the following could be used when the types of 'type' and 'payload' were different for each action
+type Action =
+  | { type: "one"; payload?: string }
+  | { type: "two"; payload?: number }
+  | { type: "three"; payload?: boolean };
+
+const initialState = { rValue: true };
+
+function reducer(state: State, action: Action) {
+  switch (action.type) {
+    case "one":
+      return { rValue: true };
+    case "two":
+      return { rValue: false };
+    case "three":
+      return initialState;
+    default:
+      return state;
+  }
+}
+
+export const ReducerButtons = () => {
+  // Demonstrates how to use 'useReducer' with typescript and React
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div>
+      {state?.rValue && <h1>Visible</h1>}
+      <button onClick={() => dispatch({ type: "one" })}>Action One</button>
+      <button onClick={() => dispatch({ type: "two" })}>Action Two</button>
+      <button onClick={() => dispatch({ type: "three" })}>Action Three</button>
+    </div>
+  );
+};
