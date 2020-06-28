@@ -1,0 +1,6 @@
+For explanations of the differenct between types and interfaces, see:
+https://www.educba.com/typescript-type-vs-interface/
+
+Typescript in React cheat sheet:
+https://www.github.com/typescript-cheatsheet/react-typescript-cheatsheet
+
